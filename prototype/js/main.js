@@ -235,82 +235,65 @@ function initProductGrid() {
   const countEl = document.getElementById('productCount');
 
   const BATCH = 40;
-  const TOTAL = 80;
+  const DEFAULT_PRICE = '4,50';
+  let products = [];
   let loaded = 0;
   let isLoading = false;
 
-  const COLORS = [
-    { name: 'Natural',  hex: 'f5f0e8', text: '8b7355' },
-    { name: 'Ivory',    hex: 'fffff0', text: '8b8b7a' },
-    { name: 'Blush',    hex: 'fce4ec', text: 'c62828' },
-    { name: 'Sage',     hex: 'e8f5e9', text: '2e7d32' },
-    { name: 'Sky Blue', hex: 'e3f2fd', text: '1565c0' },
-    { name: 'Lavender', hex: 'f3e8ff', text: '6c3fa0' },
-    { name: 'Mustard',  hex: 'fff8e1', text: 'f9a825' },
-    { name: 'Coral',    hex: 'fff3e0', text: 'e65100' },
-    { name: 'Charcoal', hex: 'eceff1', text: '37474f' },
-    { name: 'Dusty Rose',hex:'fce4ec', text: 'ad1457' },
-    { name: 'Mint',     hex: 'e0f2f1', text: '00695c' },
-    { name: 'Peach',    hex: 'fff3e0', text: 'bf360c' },
-    { name: 'Olive',    hex: 'f1f8e9', text: '558b2f' },
-    { name: 'Terracotta',hex:'fbe9e7', text: 'bf360c' },
-    { name: 'Ocean',    hex: 'e0f7fa', text: '00838f' },
-    { name: 'Sand',     hex: 'efebe9', text: '6d4c41' },
-  ];
+  function escapeHtml(s) {
+    if (!s) return '';
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
 
-  function createProductHTML(index) {
-    const color = COLORS[index % COLORS.length];
-    const num = index + 1;
-    const price = (2.5 + (index % 12) * 0.5).toFixed(2);
-    const imgUrl = `https://placehold.co/400x400/${color.hex}/${color.text}?text=${encodeURIComponent(color.name)}`;
+  function createProductHTML(product) {
+    var imgUrl = product.imgSmall || ('img/products/small/' + product.sku + '.webp');
+    var name = product.name || product.sku;
+    var productUrl = 'product-cord.html?sku=' + encodeURIComponent(product.sku);
 
-    return `
-      <div class="product-card">
-        <a href="product.html" class="product-card__image">
-          <img
-            data-src="${imgUrl}"
-            alt="BIG CORD 5mm ${color.name}"
-            class="lazy"
-          >
-        </a>
-        <div class="product-card__body">
-          <h3 class="product-card__name">
-            <a href="product.html">BIG CORD 5mm Cotton – ${color.name} #${num}</a>
-          </h3>
-          <span class="product-card__price">${price}&nbsp;€</span>
-          <button class="product-card__btn" type="button">
-            <span class="btn-text"><i class="fa-solid fa-cart-plus"></i> Add to cart</span>
-            <span class="btn-loader"></span>
-          </button>
-        </div>
-      </div>`;
+    return '<div class="product-card">' +
+      '<a href="' + escapeHtml(productUrl) + '" class="product-card__image">' +
+      '<img data-src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(name) + '" class="lazy">' +
+      '</a>' +
+      '<div class="product-card__body">' +
+      '<h3 class="product-card__name">' +
+      '<a href="' + escapeHtml(productUrl) + '">' + escapeHtml(name) + '</a>' +
+      '</h3>' +
+      '<span class="product-card__price">' + DEFAULT_PRICE + '&nbsp;€</span>' +
+      '<button class="product-card__btn" type="button">' +
+      '<span class="btn-text"><i class="fa-solid fa-cart-plus"></i> Add to cart</span>' +
+      '<span class="btn-loader"></span>' +
+      '</button>' +
+      '</div>' +
+      '</div>';
   }
 
   function loadBatch() {
-    if (isLoading || loaded >= TOTAL) return;
+    if (isLoading || loaded >= products.length) return;
     isLoading = true;
     if (loader) loader.classList.add('is-visible');
 
-    setTimeout(() => {
-      const end = Math.min(loaded + BATCH, TOTAL);
-      let html = '';
-      for (let i = loaded; i < end; i++) {
-        html += createProductHTML(i);
+    setTimeout(function () {
+      var end = Math.min(loaded + BATCH, products.length);
+      var html = '';
+      for (var i = loaded; i < end; i++) {
+        html += createProductHTML(products[i]);
       }
       grid.insertAdjacentHTML('beforeend', html);
       loaded = end;
       isLoading = false;
 
       if (loader) loader.classList.remove('is-visible');
-      if (countEl) countEl.textContent = TOTAL;
+      if (countEl) countEl.textContent = products.length;
 
-      if (loaded >= TOTAL && endMsg) {
+      if (loaded >= products.length && endMsg) {
         endMsg.style.display = '';
       }
 
       initLazyLoad();
       bindAddToCartButtons();
-    }, loaded === 0 ? 0 : 800);
+    }, loaded === 0 ? 0 : 300);
   }
 
   function bindAddToCartButtons() {
@@ -326,21 +309,30 @@ function initProductGrid() {
     });
   }
 
-  loadBatch();
-
-  const scrollSentinel = document.createElement('div');
-  scrollSentinel.id = 'scrollSentinel';
-  scrollSentinel.style.height = '1px';
-  grid.parentElement.appendChild(scrollSentinel);
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !isLoading && loaded < TOTAL) {
-        loadBatch();
+  fetch('data/wc-5mm-pes.json')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('Failed to load')); })
+    .then(function (data) {
+      products = data || [];
+      if (countEl) countEl.textContent = products.length;
+      loadBatch();
+      var scrollSentinel = document.createElement('div');
+      scrollSentinel.id = 'scrollSentinel';
+      scrollSentinel.style.height = '1px';
+      grid.parentElement.appendChild(scrollSentinel);
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting && !isLoading && loaded < products.length) {
+            loadBatch();
+          }
+        }, { rootMargin: '400px 0px' });
+        observer.observe(scrollSentinel);
       }
-    }, { rootMargin: '400px 0px' });
-    observer.observe(scrollSentinel);
-  }
+    })
+    .catch(function () {
+      grid.innerHTML = '<p class="products__end">Zoznam produktov sa nepodarilo načítať.</p>';
+      if (loader) loader.classList.remove('is-visible');
+      if (countEl) countEl.textContent = '0';
+    });
 }
 
 /* ----- Product Detail Page ----- */
@@ -460,89 +452,61 @@ function initCordSwatches() {
   const qtyMinus = document.getElementById('qtyMinus');
   const qtyPlus = document.getElementById('qtyPlus');
 
-  const PRODUCT_BASE = 'BIG CORD 5mm Cotton';
+  const PRODUCT_BASE = 'BIG CORD 5mm PES';
   const PRICE = 4.50;
-
-  const COLORS = [
-    { name: 'Lavender',      bg: 'd8b4fe', fg: '6c3fa0', stock: 23 },
-    { name: 'Sage',           bg: 'a5d6a7', fg: '2e7d32', stock: 15 },
-    { name: 'Natural',        bg: 'd7ccc8', fg: '5d4037', stock: 42 },
-    { name: 'Coral',          bg: 'ff8a65', fg: 'bf360c', stock: 0 },
-    { name: 'Mustard',        bg: 'ffd54f', fg: 'f57f17', stock: 8 },
-    { name: 'Sky Blue',       bg: '90caf9', fg: '1565c0', stock: 31 },
-    { name: 'Charcoal',       bg: '90a4ae', fg: '263238', stock: 6 },
-    { name: 'Blush',          bg: 'f48fb1', fg: 'ad1457', stock: 18 },
-    { name: 'Mint',           bg: '80cbc4', fg: '00695c', stock: 27 },
-    { name: 'Peach',          bg: 'ffab91', fg: 'bf360c', stock: 12 },
-    { name: 'Dusty Rose',     bg: 'ce93d8', fg: '6a1b9a', stock: 9 },
-    { name: 'Olive',          bg: 'aed581', fg: '33691e', stock: 35 },
-    { name: 'Terracotta',     bg: 'bcaaa4', fg: '4e342e', stock: 20 },
-    { name: 'Ocean',          bg: '4dd0e1', fg: '006064', stock: 14 },
-    { name: 'Sand',           bg: 'd7ccc8', fg: '6d4c41', stock: 40 },
-    { name: 'Ivory',          bg: 'fff9c4', fg: 'f9a825', stock: 55 },
-    { name: 'Ruby',           bg: 'ef5350', fg: 'b71c1c', stock: 3 },
-    { name: 'Navy',           bg: '5c6bc0', fg: '1a237e', stock: 22 },
-    { name: 'Forest',         bg: '66bb6a', fg: '1b5e20', stock: 17 },
-    { name: 'Burgundy',       bg: 'ad1457', fg: '880e4f', stock: 5 },
-    { name: 'Powder Blue',    bg: 'b3e5fc', fg: '01579b', stock: 30 },
-    { name: 'Caramel',        bg: 'ffcc80', fg: 'e65100', stock: 25 },
-    { name: 'Lilac',          bg: 'b39ddb', fg: '4527a0', stock: 11 },
-    { name: 'Eucalyptus',     bg: 'a5d6a7', fg: '2e7d32', stock: 19 },
-    { name: 'Stone Grey',     bg: 'bdbdbd', fg: '424242', stock: 33 },
-    { name: 'Cinnamon',       bg: 'a1887f', fg: '3e2723', stock: 7 },
-    { name: 'Denim',          bg: '64b5f6', fg: '0d47a1', stock: 28 },
-    { name: 'Pistachio',      bg: 'c5e1a5', fg: '558b2f', stock: 21 },
-    { name: 'Raspberry',      bg: 'ec407a', fg: '880e4f', stock: 0 },
-    { name: 'Cappuccino',     bg: 'bcaaa4', fg: '3e2723', stock: 16 },
-    { name: 'Aqua',           bg: '4db6ac', fg: '004d40', stock: 24 },
-    { name: 'Honey',          bg: 'ffe082', fg: 'ff8f00', stock: 38 },
-    { name: 'Slate',          bg: '78909c', fg: '263238', stock: 10 },
-    { name: 'Apricot',        bg: 'ffab91', fg: 'd84315', stock: 13 },
-    { name: 'Teal',           bg: '26a69a', fg: '004d40', stock: 29 },
-    { name: 'Rose Gold',      bg: 'f8bbd0', fg: 'c2185b', stock: 4 },
-    { name: 'Mauve',          bg: 'ba68c8', fg: '6a1b9a', stock: 8 },
-    { name: 'Butter',         bg: 'fff59d', fg: 'f9a825', stock: 45 },
-    { name: 'Cobalt',         bg: '42a5f5', fg: '0d47a1', stock: 2 },
-    { name: 'Pumpkin',        bg: 'ff7043', fg: 'bf360c', stock: 6 },
-    { name: 'Champagne',      bg: 'ffe0b2', fg: 'e65100', stock: 32 },
-    { name: 'Graphite',       bg: '616161', fg: '212121', stock: 19 },
-    { name: 'Lemon',          bg: 'fff176', fg: 'f57f17', stock: 26 },
-    { name: 'Plum',           bg: '9c27b0', fg: '4a148c', stock: 0 },
-    { name: 'Cloud',          bg: 'eceff1', fg: '546e7a', stock: 50 },
-    { name: 'Salmon',         bg: 'ef9a9a', fg: 'c62828', stock: 14 },
-    { name: 'Jade',           bg: '69f0ae', fg: '1b5e20', stock: 22 },
-    { name: 'Tangerine',      bg: 'ffa726', fg: 'e65100', stock: 11 },
-    { name: 'Periwinkle',     bg: '9fa8da', fg: '283593', stock: 18 },
-    { name: 'Wheat',          bg: 'ffe082', fg: '6d4c41', stock: 37 },
-    { name: 'Fuchsia',        bg: 'f06292', fg: '880e4f', stock: 3 },
-    { name: 'Smoke',          bg: 'b0bec5', fg: '37474f', stock: 20 },
-    { name: 'Copper',         bg: 'e6a27e', fg: '6d4c41', stock: 9 },
-    { name: 'Arctic',         bg: 'b2ebf2', fg: '00838f', stock: 41 },
-    { name: 'Mocha',          bg: '8d6e63', fg: '3e2723', stock: 15 },
-    { name: 'Sunflower',      bg: 'ffee58', fg: 'f57f17', stock: 34 },
-    { name: 'Indigo',         bg: '7986cb', fg: '1a237e', stock: 7 },
-    { name: 'Cream',          bg: 'fff8e1', fg: '8d6e63', stock: 48 },
-    { name: 'Paprika',        bg: 'e53935', fg: 'b71c1c', stock: 0 },
-    { name: 'Snow White',     bg: 'fafafa', fg: '9e9e9e', stock: 60 },
-  ];
 
   function formatPrice(val) {
     return val.toFixed(2).replace('.', ',') + '\u00a0€';
   }
 
-  function buildSwatches() {
-    let html = '';
-    COLORS.forEach((c, i) => {
-      const imgUrl = `https://placehold.co/120x120/${c.bg}/${c.fg}?text=${encodeURIComponent(c.name.substring(0, 8))}`;
-      const activeClass = i === 0 ? ' is-active' : '';
-      const oosClass = c.stock === 0 ? ' is-oos' : '';
-      html += `<div class="swatch${activeClass}${oosClass}" data-index="${i}" data-name="${c.name}" data-stock="${c.stock}" data-img="https://placehold.co/600x600/${c.bg}/${c.fg}?text=${encodeURIComponent(c.name)}" title="${c.name}">
-        <img src="${imgUrl}" alt="${c.name}" loading="lazy">
-        <span class="swatch__tip">${c.name}</span>
-      </div>`;
+  function escapeHtml(s) {
+    if (!s) return '';
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  function buildSwatchesFromProducts(products) {
+    if (!products || !products.length) {
+      grid.innerHTML = '<p class="swatches__empty">Žiadne farby na načítanie.</p>';
+      return;
+    }
+    var html = '';
+    products.forEach(function (c, i) {
+      var imgColor = "img/products/" + c.sku + "-110x110.webp";
+      var imgMain = "img/products/" + c.sku + ".webp";
+      var activeClass = i === 0 ? ' is-active' : '';
+      var stock = c.stock != null ? c.stock : 10;
+      var oosClass = stock === 0 ? ' is-oos' : '';
+      var name = c.name || c.sku;
+      html += '<div class="swatch' + activeClass + oosClass + '" data-index="' + i + '" data-name="' + escapeHtml(name) + '" data-stock="' + stock + '" data-img="' + escapeHtml(imgMain) + '" data-sku="' + escapeHtml(c.sku) + '" title="' + escapeHtml(c.color || c.SKU) + '">' +
+        '<img src="' + escapeHtml(imgColor) + '" alt="' + escapeHtml(name) + '" loading="lazy" onerror="this.style.background=\'#eee\';this.style.minHeight=\'100%\';this.onerror=null;">' +
+        '<span class="swatch__tip">' + escapeHtml(c.color || c.SKU) + '</span>' +
+        '</div>';
     });
     grid.innerHTML = html;
+    if (products.length > 0 && mainImage) {
+      mainImage.src = products[0].imgSmall || ('img/products/small/' + products[0].sku + '.webp');
+      mainImage.alt = PRODUCT_BASE + ' – ' + (products[0].name || products[0].sku);
+    }
   }
+
+  function bindSwatchEvents() {
+    grid.addEventListener('click', function (e) {
+      var swatch = e.target.closest('.swatch');
+      if (swatch) selectSwatch(swatch);
+    });
+  }
+
+  fetch('data/wc-5mm-pes.json')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('Failed to load')); })
+    .then(function (products) {
+      buildSwatchesFromProducts(products);
+      bindSwatchEvents();
+    })
+    .catch(function () {
+      grid.innerHTML = '<p class="swatches__empty">Zoznam farieb sa nepodarilo načítať.</p>';
+    });
 
   function selectSwatch(swatch) {
     grid.querySelectorAll('.swatch').forEach(s => s.classList.remove('is-active'));
@@ -561,7 +525,7 @@ function initCordSwatches() {
       }, 150);
     }
 
-    if (titleEl) titleEl.textContent = PRODUCT_BASE + ' – ' + name;
+    if (titleEl) titleEl.textContent = "BIG CORD " + name;
     if (priceEl) priceEl.textContent = formatPrice(PRICE);
     if (priceVatEl) priceVatEl.textContent = formatPrice(PRICE / 1.2) + ' excl. VAT';
 
@@ -597,13 +561,6 @@ function initCordSwatches() {
       }
     }
   }
-
-  buildSwatches();
-
-  grid.addEventListener('click', (e) => {
-    const swatch = e.target.closest('.swatch');
-    if (swatch) selectSwatch(swatch);
-  });
 
   /* Quantity +/- and add-to-cart (if not already bound by initProductDetail) */
   if (qtyMinus && qtyInput && !qtyMinus.dataset.bound) {
