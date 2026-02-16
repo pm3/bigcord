@@ -2105,14 +2105,6 @@ body.menu-open {
    ============================================================ */
 .swatches {
   margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--color-border);
-}
-
-.swatches__count {
-  font-size: .85rem;
-  font-weight: 400;
-  color: var(--color-text-light);
 }
 
 .swatches__grid {

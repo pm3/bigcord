@@ -266,7 +266,7 @@ function initProductGrid() {
 
     return `
       <div class="product-card">
-        <a href="#" class="product-card__image">
+        <a href="product.html" class="product-card__image">
           <img
             data-src="${imgUrl}"
             alt="BIG CORD 5mm ${color.name}"
@@ -275,7 +275,7 @@ function initProductGrid() {
         </a>
         <div class="product-card__body">
           <h3 class="product-card__name">
-            <a href="#">BIG CORD 5mm Cotton – ${color.name} #${num}</a>
+            <a href="product.html">BIG CORD 5mm Cotton – ${color.name} #${num}</a>
           </h3>
           <span class="product-card__price">${price}&nbsp;€</span>
           <button class="product-card__btn" type="button">
