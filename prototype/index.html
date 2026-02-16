@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIG CORD – Handmade Cords &amp; Supplies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header">
+    <div class="header__inner container">
+      <a href="/" class="header__logo">
+        <img
+          src="https://www.bigcord.eu/wp-content/uploads/2024/02/cropped-cropped-cropped-Dizajn-bez-nazvu-11.png"
+          alt="BIG CORD"
+          width="384"
+          height="306"
+        >
+      </a>
+
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__menu">
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#cart" class="header__cart" aria-label="Shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="header__cart-total">0,00&nbsp;€</span>
+        </a>
+        <button class="header__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html">Shop</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================ HERO BANNER / CAROUSEL ================ -->
+    <section class="banner" aria-label="Promotional banners">
+      <div class="banner__track" id="bannerTrack">
+        <div class="banner__slide active">
+          <div class="banner__placeholder" style="background:#f3e8ff;">
+            <div class="banner__placeholder-content">
+              <h2>Handmade with Love</h2>
+              <p>Premium macramé cords for your creative projects</p>
+              <a href="#shop" class="btn btn--primary">Shop Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="banner__slide">
+          <div class="banner__placeholder" style="background:#e8f5e9;">
+            <div class="banner__placeholder-content">
+              <h2>New Collection 2026</h2>
+              <p>Explore our latest colors and sizes</p>
+              <a href="#shop" class="btn btn--primary">Discover</a>
+            </div>
+          </div>
+        </div>
+        <div class="banner__slide">
+          <div class="banner__placeholder" style="background:#fff3e0;">
+            <div class="banner__placeholder-content">
+              <h2>Free Shipping over 50&nbsp;€</h2>
+              <p>On all orders within the EU</p>
+              <a href="#shop" class="btn btn--primary">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="banner__dots" id="bannerDots">
+        <button class="banner__dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="banner__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="banner__dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
+      <button class="banner__arrow banner__arrow--prev" id="bannerPrev" aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="banner__arrow banner__arrow--next" id="bannerNext" aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </section>
+
+    <!-- ================ CATEGORIES ================ -->
+    <section class="categories" id="shop">
+      <div class="container">
+        <h2 class="section-title">Categories</h2>
+        <div class="categories__grid">
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-sewing.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-scissors"></i></div>
+            </div>
+            <span class="category-card__label">Cords for sewing</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-2mm.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-grip-lines"></i></div>
+            </div>
+            <span class="category-card__label">Cords 2mm BIG CORD</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-3mm.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-grip-lines-vertical"></i></div>
+            </div>
+            <span class="category-card__label">Cords 3mm BIG CORD</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-5mm-cotton.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-circle-nodes"></i></div>
+            </div>
+            <span class="category-card__label">Cords 5mm – COTTON core</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-5mm-pes.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-circle-dot"></i></div>
+            </div>
+            <span class="category-card__label">Cords 5mm – PES core</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/cords-9mm.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-rope"></i></div>
+            </div>
+            <span class="category-card__label">Cords 9mm BIG CORD</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/sewing-threads.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-spool"></i></div>
+            </div>
+            <span class="category-card__label">Sewing threads</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/other-components.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-puzzle-piece"></i></div>
+            </div>
+            <span class="category-card__label">Other components</span>
+          </a>
+
+          <a href="category.html" class="category-card">
+            <div class="category-card__icon">
+              <img src="img/categories/diy-set.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="category-card__icon-fallback"><i class="fa-solid fa-box-open"></i></div>
+            </div>
+            <span class="category-card__label">DIY set</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ EVENT PANEL ================ -->
+    <section class="event" id="event">
+      <div class="container">
+        <h2 class="section-title">Upcoming Event</h2>
+        <div class="event__card">
+          <div class="event__image">
+            <div class="event__image-placeholder">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span>Event Photo</span>
+            </div>
+          </div>
+          <div class="event__info">
+            <h3 class="event__name">Creativa Dortmund</h3>
+            <p class="event__date"><i class="fa-regular fa-calendar"></i> 25 – 29. 03. 2026</p>
+            <p class="event__location"><i class="fa-solid fa-location-dot"></i> Messe Dortmund, Germany</p>
+            <div class="event__countdown" id="eventCountdown" data-target="2026-03-25T09:00:00+01:00">
+              <div class="countdown__item">
+                <span class="countdown__number" id="countDays">--</span>
+                <span class="countdown__label">days</span>
+              </div>
+              <div class="countdown__item">
+                <span class="countdown__number" id="countHours">--</span>
+                <span class="countdown__label">hours</span>
+              </div>
+              <div class="countdown__item">
+                <span class="countdown__number" id="countMinutes">--</span>
+                <span class="countdown__label">min</span>
+              </div>
+              <div class="countdown__item">
+                <span class="countdown__number" id="countSeconds">--</span>
+                <span class="countdown__label">sec</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn--outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ INSTAGRAM FEED ================ -->
+    <section class="instagram" id="instagram">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-brands fa-instagram"></i> Follow us on Instagram</h2>
+        <div class="instagram__grid" id="instagramGrid">
+          <!-- Placeholder posts -->
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#f8e1f4;"><i class="fa-brands fa-instagram"></i></div></div>
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#e1e8f8;"><i class="fa-brands fa-instagram"></i></div></div>
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#e8f8e1;"><i class="fa-brands fa-instagram"></i></div></div>
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#f8f0e1;"><i class="fa-brands fa-instagram"></i></div></div>
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#f8e1e1;"><i class="fa-brands fa-instagram"></i></div></div>
+          <div class="instagram__post"><div class="instagram__placeholder" style="background:#e1f8f4;"><i class="fa-brands fa-instagram"></i></div></div>
+        </div>
+        <div class="instagram__cta">
+          <a href="https://www.instagram.com/bigcord.eu/" target="_blank" rel="noopener" class="btn btn--instagram">
+            <i class="fa-brands fa-instagram"></i> @bigcord.eu
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Block 1 – About Us -->
+        <div class="footer__block">
+          <h4 class="footer__heading">About Us</h4>
+          <address class="footer__address">
+            <strong>VEĽKÁvlna, s.r.o.</strong><br>
+            Company ID: 53 656 491<br>
+            VAT ID: SK2121451585<br><br>
+            <a href="mailto:bigcord.info@gmail.com"><i class="fa-regular fa-envelope"></i> bigcord.info@gmail.com</a><br>
+            <a href="tel:+421908548762"><i class="fa-solid fa-phone"></i> +421 908 548 762</a><br>
+            <a href="tel:+421904198676"><i class="fa-solid fa-phone"></i> +421 904 198 676</a><br><br>
+            <i class="fa-solid fa-location-dot"></i> Kataríny Franklovej 5399/1,<br>
+            902 01 Pezinok, Slovakia
+          </address>
+        </div>
+
+        <!-- Block 2 – Customer Service -->
+        <div class="footer__block">
+          <h4 class="footer__heading">Customer Service</h4>
+          <ul class="footer__links">
+            <li><a href="#">General Terms and Conditions</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+          <h4 class="footer__heading footer__heading--small">Payment Methods</h4>
+          <div class="footer__payments">
+            <span class="footer__payment-icon" title="Visa"><i class="fa-brands fa-cc-visa"></i></span>
+            <span class="footer__payment-icon" title="Mastercard"><i class="fa-brands fa-cc-mastercard"></i></span>
+            <span class="footer__payment-icon" title="Stripe"><i class="fa-brands fa-cc-stripe"></i></span>
+            <span class="footer__payment-icon" title="PayPal"><i class="fa-brands fa-cc-paypal"></i></span>
+          </div>
+        </div>
+
+        <!-- Block 3 – Follow Us -->
+        <div class="footer__block">
+          <h4 class="footer__heading">Follow Us</h4>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/bigcord.eu" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/bigcord.eu/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 VEĽKÁvlna, s.r.o. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

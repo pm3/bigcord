@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart – BIG CORD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=7">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header">
+    <div class="header__inner container">
+      <a href="index.html" class="header__logo">
+        <img src="https://www.bigcord.eu/wp-content/uploads/2024/02/cropped-cropped-cropped-Dizajn-bez-nazvu-11.png" alt="BIG CORD" width="384" height="306">
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__menu">
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="cart.html" class="is-active">Cart</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="cart.html" class="header__cart is-active-link" aria-label="Shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="header__cart-total">22,50&nbsp;€</span>
+        </a>
+        <button class="header__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html">Shop</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="cart.html" class="is-active">Cart</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="cart-page">
+      <div class="container">
+        <h1 class="cart-page__title"><i class="fa-solid fa-bag-shopping"></i> Shopping Cart</h1>
+
+        <div class="cart-layout">
+
+          <!-- ============ LEFT: Cart items + options ============ -->
+          <div class="cart-main">
+
+            <!-- ---- Cart Items ---- -->
+            <div class="cart-items" id="cartItems">
+
+              <div class="cart-item" data-id="1" data-price="4.50" data-stock="23">
+                <div class="cart-item__img">
+                  <img src="https://placehold.co/80x80/f3e8ff/6c3fa0?text=Lav" alt="Lavender">
+                </div>
+                <div class="cart-item__details">
+                  <h3 class="cart-item__name">BIG CORD 5mm Cotton – Lavender</h3>
+                  <span class="cart-item__unit-price">4,50&nbsp;€ / pc</span>
+                </div>
+                <div class="cart-item__qty-wrap">
+                  <div class="cart-item__qty">
+                    <button class="cart-item__qty-btn" data-action="minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                    <input class="cart-item__qty-input" type="number" value="3" min="1" max="23">
+                    <button class="cart-item__qty-btn" data-action="plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                  <span class="cart-item__stock-warn" style="display:none;"><i class="fa-solid fa-triangle-exclamation"></i> Only <span class="cart-item__stock-max"></span> in stock</span>
+                </div>
+                <div class="cart-item__end">
+                  <span class="cart-item__line-total">13,50&nbsp;€</span>
+                  <button class="cart-item__remove" type="button" aria-label="Remove item"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+              </div>
+
+              <div class="cart-item" data-id="2" data-price="4.50" data-stock="15">
+                <div class="cart-item__img">
+                  <img src="https://placehold.co/80x80/e8f5e9/2e7d32?text=Sage" alt="Sage">
+                </div>
+                <div class="cart-item__details">
+                  <h3 class="cart-item__name">BIG CORD 5mm Cotton – Sage</h3>
+                  <span class="cart-item__unit-price">4,50&nbsp;€ / pc</span>
+                </div>
+                <div class="cart-item__qty-wrap">
+                  <div class="cart-item__qty">
+                    <button class="cart-item__qty-btn" data-action="minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                    <input class="cart-item__qty-input" type="number" value="2" min="1" max="15">
+                    <button class="cart-item__qty-btn" data-action="plus" type="button"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                  <span class="cart-item__stock-warn" style="display:none;"><i class="fa-solid fa-triangle-exclamation"></i> Only <span class="cart-item__stock-max"></span> in stock</span>
+                </div>
+                <div class="cart-item__end">
+                  <span class="cart-item__line-total">9,00&nbsp;€</span>
+                  <button class="cart-item__remove" type="button" aria-label="Remove item"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ---- Coupon Code ---- -->
+            <div class="cart-coupon" id="cartCouponSection">
+              <!-- Input form (shown when no coupon applied) -->
+              <div class="cart-coupon__form" id="couponForm">
+                <label class="cart-coupon__label" for="couponInput"><i class="fa-solid fa-tag"></i> Have a coupon code?</label>
+                <div class="cart-coupon__row">
+                  <input class="cart-coupon__input" id="couponInput" type="text" placeholder="Enter code" autocomplete="off">
+                  <button class="cart-coupon__apply btn btn--primary" id="couponApplyBtn" type="button">Apply</button>
+                </div>
+                <span class="cart-coupon__error" id="couponError" style="display:none;">Invalid coupon code</span>
+              </div>
+              <!-- Applied coupon (shown when a coupon is active) -->
+              <div class="cart-coupon__applied" id="couponApplied" style="display:none;">
+                <div class="cart-coupon__badge">
+                  <i class="fa-solid fa-tag"></i>
+                  <span id="couponBadgeCode">SAVE10</span>
+                  <span id="couponBadgeDesc">– 10% off</span>
+                </div>
+                <button class="cart-coupon__remove" id="couponRemoveBtn" type="button" aria-label="Remove coupon">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Empty cart message -->
+            <div class="cart-empty" id="cartEmpty" style="display:none;">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <p>Your cart is empty.</p>
+              <a href="index.html" class="btn btn--primary">Continue Shopping</a>
+            </div>
+
+            <!-- ---- Country ---- -->
+            <div class="cart-section" id="cartCountrySection">
+              <h2 class="cart-section__title">Delivery country</h2>
+              <div class="cart-select-wrap">
+                <select class="cart-select" id="cartCountry">
+                  <option value="SK" selected>Slovakia</option>
+                  <option value="CZ">Czech Republic</option>
+                  <option value="DE">Germany</option>
+                  <option value="AT">Austria</option>
+                  <option value="PL">Poland</option>
+                  <option value="HU">Hungary</option>
+                  <option value="EU">Other EU country</option>
+                </select>
+                <i class="fa-solid fa-chevron-down cart-select__arrow"></i>
+              </div>
+            </div>
+
+            <!-- ---- Shipping ---- -->
+            <div class="cart-section" id="cartShippingSection">
+              <h2 class="cart-section__title">Shipping method</h2>
+              <div class="cart-options" id="shippingOptions">
+
+                <label class="cart-option cart-option--checked">
+                  <input type="radio" name="shipping" value="standard" data-price="3.90" checked>
+                  <span class="cart-option__radio"></span>
+                  <i class="fa-solid fa-truck cart-option__icon"></i>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">Standard Shipping</span>
+                    <span class="cart-option__desc">3–5 business days</span>
+                  </span>
+                  <span class="cart-option__price">3,90&nbsp;€</span>
+                </label>
+
+                <label class="cart-option">
+                  <input type="radio" name="shipping" value="express" data-price="8.90">
+                  <span class="cart-option__radio"></span>
+                  <i class="fa-solid fa-truck-fast cart-option__icon"></i>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">Express Shipping</span>
+                    <span class="cart-option__desc">1–2 business days</span>
+                  </span>
+                  <span class="cart-option__price">8,90&nbsp;€</span>
+                </label>
+
+                <label class="cart-option">
+                  <input type="radio" name="shipping" value="pickup" data-price="0">
+                  <span class="cart-option__radio"></span>
+                  <i class="fa-solid fa-store cart-option__icon"></i>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">Personal Pickup</span>
+                    <span class="cart-option__desc">Pezinok, Slovakia</span>
+                  </span>
+                  <span class="cart-option__price">Free</span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- ---- Payment ---- -->
+            <div class="cart-section" id="cartPaymentSection">
+              <h2 class="cart-section__title">Payment method</h2>
+              <div class="cart-options" id="paymentOptions">
+
+                <label class="cart-option cart-option--checked">
+                  <input type="radio" name="payment" value="card" data-price="0" checked>
+                  <span class="cart-option__radio"></span>
+                  <span class="cart-option__icon-group">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                  </span>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">Credit / Debit Card</span>
+                  </span>
+                  <span class="cart-option__price">Free</span>
+                </label>
+
+                <label class="cart-option">
+                  <input type="radio" name="payment" value="stripe" data-price="0">
+                  <span class="cart-option__radio"></span>
+                  <i class="fa-brands fa-cc-stripe cart-option__icon"></i>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">Stripe</span>
+                  </span>
+                  <span class="cart-option__price">Free</span>
+                </label>
+
+                <label class="cart-option">
+                  <input type="radio" name="payment" value="paypal" data-price="2.00">
+                  <span class="cart-option__radio"></span>
+                  <i class="fa-brands fa-cc-paypal cart-option__icon"></i>
+                  <span class="cart-option__info">
+                    <span class="cart-option__name">PayPal</span>
+                  </span>
+                  <span class="cart-option__price">+ 2,00&nbsp;€</span>
+                </label>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ============ RIGHT: Order summary (sticky on desktop) ============ -->
+          <aside class="cart-summary" id="cartSummary">
+            <h2 class="cart-summary__title">Order Summary</h2>
+
+            <div class="cart-summary__rows">
+              <div class="cart-summary__row">
+                <span>Subtotal (<span id="summaryItemCount">5</span> items)</span>
+                <span id="summarySubtotal">22,50&nbsp;€</span>
+              </div>
+              <div class="cart-summary__row cart-summary__row--discount" id="summaryDiscountRow" style="display:none;">
+                <span>Discount (<span id="summaryDiscountLabel">SAVE10</span>)</span>
+                <span id="summaryDiscount">- 2,25&nbsp;€</span>
+              </div>
+              <div class="cart-summary__row">
+                <span>Shipping</span>
+                <span id="summaryShipping">3,90&nbsp;€</span>
+              </div>
+              <div class="cart-summary__row">
+                <span>Payment fee</span>
+                <span id="summaryPayment">0,00&nbsp;€</span>
+              </div>
+              <div class="cart-summary__divider"></div>
+              <div class="cart-summary__row cart-summary__row--total">
+                <span>Total incl. VAT</span>
+                <span id="summaryTotal">26,40&nbsp;€</span>
+              </div>
+              <div class="cart-summary__row cart-summary__row--vat">
+                <span>Total excl. VAT</span>
+                <span id="summaryTotalExVat">22,00&nbsp;€</span>
+              </div>
+              <div class="cart-summary__row cart-summary__row--vat">
+                <span>VAT (20%)</span>
+                <span id="summaryVat">4,40&nbsp;€</span>
+              </div>
+            </div>
+
+            <button class="cart-summary__checkout btn btn--primary" type="button" id="checkoutBtn">
+              Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <a href="index.html" class="cart-summary__continue">
+              <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+            </a>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__block">
+          <h4 class="footer__heading">About Us</h4>
+          <address class="footer__address">
+            <strong>VEĽKÁvlna, s.r.o.</strong><br>
+            Company ID: 53 656 491<br>
+            VAT ID: SK2121451585<br><br>
+            <a href="mailto:bigcord.info@gmail.com"><i class="fa-regular fa-envelope"></i> bigcord.info@gmail.com</a><br>
+            <a href="tel:+421908548762"><i class="fa-solid fa-phone"></i> +421 908 548 762</a><br>
+            <a href="tel:+421904198676"><i class="fa-solid fa-phone"></i> +421 904 198 676</a><br><br>
+            <i class="fa-solid fa-location-dot"></i> Kataríny Franklovej 5399/1,<br>
+            902 01 Pezinok, Slovakia
+          </address>
+        </div>
+        <div class="footer__block">
+          <h4 class="footer__heading">Customer Service</h4>
+          <ul class="footer__links">
+            <li><a href="#">General Terms and Conditions</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+          <h4 class="footer__heading footer__heading--small">Payment Methods</h4>
+          <div class="footer__payments">
+            <span class="footer__payment-icon" title="Visa"><i class="fa-brands fa-cc-visa"></i></span>
+            <span class="footer__payment-icon" title="Mastercard"><i class="fa-brands fa-cc-mastercard"></i></span>
+            <span class="footer__payment-icon" title="Stripe"><i class="fa-brands fa-cc-stripe"></i></span>
+            <span class="footer__payment-icon" title="PayPal"><i class="fa-brands fa-cc-paypal"></i></span>
+          </div>
+        </div>
+        <div class="footer__block">
+          <h4 class="footer__heading">Follow Us</h4>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/bigcord.eu" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/bigcord.eu/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 VEĽKÁvlna, s.r.o. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=7"></script>
+</body>
+</html>

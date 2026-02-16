@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials – BIG CORD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header">
+    <div class="header__inner container">
+      <a href="index.html" class="header__logo">
+        <img
+          src="https://www.bigcord.eu/wp-content/uploads/2024/02/cropped-cropped-cropped-Dizajn-bez-nazvu-11.png"
+          alt="BIG CORD"
+          width="384"
+          height="306"
+        >
+      </a>
+
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__menu">
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="tutorials.html" class="is-active">Tutorials</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#cart" class="header__cart" aria-label="Shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="header__cart-total">0,00&nbsp;€</span>
+        </a>
+        <button class="header__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html">Shop</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================ PAGE TITLE ================ -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero__title">Tutorials</h1>
+        <p class="page-hero__subtitle">Tutorials, tips &amp; inspiration for your creative projects</p>
+      </div>
+    </section>
+
+    <!-- ================ LABEL FILTER ================ -->
+    <section class="tutorials-filter">
+      <div class="container">
+        <div class="filter-pills" id="filterPills">
+          <button class="filter-pill is-active" data-label="all">All</button>
+          <button class="filter-pill" data-label="macrame">Macramé</button>
+          <button class="filter-pill" data-label="crochet">Crochet</button>
+          <button class="filter-pill" data-label="knitting">Knitting</button>
+          <button class="filter-pill" data-label="sewing">Sewing</button>
+          <button class="filter-pill" data-label="beginner">Beginner</button>
+          <button class="filter-pill" data-label="advanced">Advanced</button>
+          <button class="filter-pill" data-label="video">Video</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ TUTORIALS LISTING ================ -->
+    <section class="tutorials-list">
+      <div class="container">
+
+        <!-- Tutorial 1 -->
+        <article class="tutorial-card" data-labels="macrame beginner">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/f3e8ff/6c3fa0?text=Macram%C3%A9+Basics"
+              alt="Macramé Basics"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/f3e8ff/6c3fa0?text=Macram%C3%A9+Basics" alt="Macramé Basics"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Macramé</span>
+              <span class="label-tag">Beginner</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">Macramé Basics: Your First Wall Hanging</a></h2>
+            <p class="tutorial-card__excerpt">Learn the fundamental knots and create a beautiful wall hanging from scratch using BIG CORD 5mm cotton rope.</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Tutorial 2 -->
+        <article class="tutorial-card" data-labels="macrame advanced">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/e8f5e9/2e7d32?text=Plant+Hanger"
+              alt="Macramé Plant Hanger"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/e8f5e9/2e7d32?text=Plant+Hanger" alt="Macramé Plant Hanger"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Macramé</span>
+              <span class="label-tag">Advanced</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">Macramé Plant Hanger with Wooden Ring</a></h2>
+            <p class="tutorial-card__excerpt">Step-by-step guide to creating a stunning plant hanger using spiral knots and gathering knots with our 3mm cord.</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Tutorial 3 -->
+        <article class="tutorial-card" data-labels="crochet beginner">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/fff3e0/e65100?text=Crochet+Basket"
+              alt="Crochet Basket"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/fff3e0/e65100?text=Crochet+Basket" alt="Crochet Basket"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Crochet</span>
+              <span class="label-tag">Beginner</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">Crochet Storage Basket with Handles</a></h2>
+            <p class="tutorial-card__excerpt">Create a practical and stylish storage basket using BIG CORD 9mm rope. Perfect for organizing your home.</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Tutorial 4 -->
+        <article class="tutorial-card" data-labels="macrame video">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/fce4ec/c62828?text=Keychain+DIY"
+              alt="Macramé Keychain"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/fce4ec/c62828?text=Keychain+DIY" alt="Macramé Keychain"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Macramé</span>
+              <span class="label-tag">Video</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">DIY Macramé Keychain – Video Tutorial</a></h2>
+            <p class="tutorial-card__excerpt">Quick and fun project! Watch the full video tutorial and make a cute keychain in under 30 minutes.</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Tutorial 5 -->
+        <article class="tutorial-card" data-labels="knitting beginner">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/e8eaf6/283593?text=Knitting+Scarf"
+              alt="Knitting Scarf"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/e8eaf6/283593?text=Knitting+Scarf" alt="Knitting Scarf"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Knitting</span>
+              <span class="label-tag">Beginner</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">Chunky Knit Scarf for Beginners</a></h2>
+            <p class="tutorial-card__excerpt">A cozy weekend project using our thick 9mm cord. No experience needed – just two needles and some cord!</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Tutorial 6 -->
+        <article class="tutorial-card" data-labels="sewing advanced">
+          <a href="tutorial-detail.html" class="tutorial-card__image">
+            <img
+              data-src="https://placehold.co/600x400/f1f8e9/558b2f?text=Sewing+Bag"
+              alt="Sewing Tote Bag"
+              class="lazy"
+            >
+            <noscript><img src="https://placehold.co/600x400/f1f8e9/558b2f?text=Sewing+Bag" alt="Sewing Tote Bag"></noscript>
+          </a>
+          <div class="tutorial-card__body">
+            <div class="tutorial-card__labels">
+              <span class="label-tag">Sewing</span>
+              <span class="label-tag">Advanced</span>
+            </div>
+            <h2 class="tutorial-card__title"><a href="tutorial-detail.html">Cord-Trimmed Tote Bag Sewing Pattern</a></h2>
+            <p class="tutorial-card__excerpt">Add a handmade touch to your tote bag with decorative cord trim using our 2mm sewing cords.</p>
+            <a href="tutorial-detail.html" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- No-results message (hidden by default) -->
+        <div class="tutorials-empty" id="tutorialsEmpty" style="display:none;">
+          <i class="fa-regular fa-face-sad-tear"></i>
+          <p>No tutorials found for the selected filter.</p>
+          <button class="btn btn--outline" id="resetFilter">Show all</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__block">
+          <h4 class="footer__heading">About Us</h4>
+          <address class="footer__address">
+            <strong>VEĽKÁvlna, s.r.o.</strong><br>
+            Company ID: 53 656 491<br>
+            VAT ID: SK2121451585<br><br>
+            <a href="mailto:bigcord.info@gmail.com"><i class="fa-regular fa-envelope"></i> bigcord.info@gmail.com</a><br>
+            <a href="tel:+421908548762"><i class="fa-solid fa-phone"></i> +421 908 548 762</a><br>
+            <a href="tel:+421904198676"><i class="fa-solid fa-phone"></i> +421 904 198 676</a><br><br>
+            <i class="fa-solid fa-location-dot"></i> Kataríny Franklovej 5399/1,<br>
+            902 01 Pezinok, Slovakia
+          </address>
+        </div>
+        <div class="footer__block">
+          <h4 class="footer__heading">Customer Service</h4>
+          <ul class="footer__links">
+            <li><a href="#">General Terms and Conditions</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Return Policy</a></li>
+          </ul>
+          <h4 class="footer__heading footer__heading--small">Payment Methods</h4>
+          <div class="footer__payments">
+            <span class="footer__payment-icon" title="Visa"><i class="fa-brands fa-cc-visa"></i></span>
+            <span class="footer__payment-icon" title="Mastercard"><i class="fa-brands fa-cc-mastercard"></i></span>
+            <span class="footer__payment-icon" title="Stripe"><i class="fa-brands fa-cc-stripe"></i></span>
+            <span class="footer__payment-icon" title="PayPal"><i class="fa-brands fa-cc-paypal"></i></span>
+          </div>
+        </div>
+        <div class="footer__block">
+          <h4 class="footer__heading">Follow Us</h4>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/bigcord.eu" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/bigcord.eu/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 VEĽKÁvlna, s.r.o. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>
