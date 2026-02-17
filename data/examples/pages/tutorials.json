@@ -1,0 +1,12 @@
+{
+  "template": "pages/page_tutorials.html",
+  "title": "Tutorials – BIG CORD",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "page_hero_data": {
+    "title": "Tutorials",
+    "subtitle": "Tutorials, tips & inspiration for your creative projects"
+  },
+  "tutorials_filter_data": "_load:data/examples/components/tutorials_filter.json",
+  "tutorials_list_data": "_load:data/examples/components/tutorials_list.json"
+}

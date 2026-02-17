@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block main %}
+{% with data=breadcrumb_data %}
+{% include 'components/breadcrumb.html' %}
+{% endwith %}
+{% with data=product_detail_data %}
+{% include 'product/product_detail.html' %}
+{% endwith %}
+{% endblock %}

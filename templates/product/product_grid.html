@@ -1,0 +1,18 @@
+{# Expects: data.products[] { url, name, image_src, price, sku? }. All products rendered at build; images load lazily via data-src (JS initLazyLoad). #}
+<section class="products">
+  <div class="container">
+    <div class="products__grid" id="productGrid">
+      {% for p in data.products %}
+      <article class="product-card" data-sku="{{ p.sku }}">
+        <a href="{{ p.url }}" class="product-card__image">
+          <img data-src="{{ p.image_src }}" alt="{{ p.name }}" class="lazy">
+        </a>
+        <div class="product-card__body">
+          <h2 class="product-card__title"><a href="{{ p.url }}">{{ p.name }}</a></h2>
+          <span class="product-card__price">{{ p.price }}&nbsp;€</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

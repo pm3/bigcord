@@ -1,0 +1,70 @@
+{
+  "template": "pages/page_index.html",
+  "title": "BIG CORD – Handmade Cords & Supplies",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "components": [
+    {
+      "component_name": "components/banner",
+      "params": {
+        "slides": [
+          {
+            "title": "Handmade with Love",
+            "subtitle": "Premium macramé cords for your creative projects",
+            "cta_text": "Shop Now",
+            "cta_url": "#shop",
+            "bg_style": "#f3e8ff"
+          },
+          {
+            "title": "New Collection 2026",
+            "subtitle": "Explore our latest colors and sizes",
+            "cta_text": "Discover",
+            "cta_url": "#shop",
+            "bg_style": "#e8f5e9"
+          },
+          {
+            "title": "Free Shipping over 50 €",
+            "subtitle": "On all orders within the EU",
+            "cta_text": "Order Now",
+            "cta_url": "#shop",
+            "bg_style": "#fff3e0"
+          }
+        ]
+      }
+    },
+    {
+      "component_name": "product/categories",
+      "params": "_load:data/examples/components/categories.json"
+    },
+    {
+      "component_name": "components/event",
+      "params": {
+        "section_title": "Upcoming Event",
+        "name": "Creativa Dortmund",
+        "date": "25 – 29. 03. 2026",
+        "location_html": "Messe Dortmund, Germany<br>Halle H4 Stand B64",
+        "image_src": "img/banners/banner-1771273148786.webp",
+        "image_alt": "Creativa Dortmund",
+        "countdown_target": "2026-03-25T09:00:00+01:00",
+        "cta_url": "#",
+        "cta_text": "Learn More"
+      }
+    },
+    {
+      "component_name": "components/instagram",
+      "params": {
+        "section_title": "Follow us on Instagram",
+        "posts": [
+          { "bg_style": "#f8e1f4" },
+          { "bg_style": "#e1e8f8" },
+          { "bg_style": "#e8f8e1" },
+          { "bg_style": "#f8f0e1" },
+          { "bg_style": "#f8e1e1" },
+          { "bg_style": "#e1f8f4" }
+        ],
+        "cta_url": "https://www.instagram.com/bigcord.eu/",
+        "handle": "@bigcord.eu"
+      }
+    }
+  ]
+}

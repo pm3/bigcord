@@ -1,0 +1,14 @@
+{
+  "template": "pages/page_tutorial_detail.html",
+  "title": "Macramé Basics: Your First Wall Hanging – BIG CORD",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "breadcrumb_data": {
+    "items": [
+      { "url": "index.html", "label": "Home" },
+      { "url": "tutorials.html", "label": "Tutorials" },
+      { "url": "", "label": "Macramé Basics: Your First Wall Hanging" }
+    ]
+  },
+  "tutorial_detail_data": "_load:data/examples/components/tutorial_detail.json"
+}

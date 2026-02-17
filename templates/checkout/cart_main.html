@@ -1,0 +1,150 @@
+{# Expects: data.title, data.items[] { id, image_src, image_alt, name, unit_price, qty, max_stock, line_total }, data.coupon_*, data.country_options[], data.shipping_options[], data.payment_options[], data.summary { item_count, subtotal, discount_row?, shipping, payment, total, total_ex_vat, vat }, data.checkout_url, data.continue_shopping_url #}
+<section class="cart-page">
+  <div class="container">
+    <h1 class="cart-page__title"><i class="fa-solid fa-bag-shopping"></i> {{ data.title }}</h1>
+    <div class="cart-layout">
+      <div class="cart-main">
+        <div class="cart-items" id="cartItems">
+          {% for item in data['items'] %}
+          <div class="cart-item" data-id="{{ item.id }}" data-price="{{ item.unit_price_num }}" data-stock="{{ item.max_stock }}">
+            <div class="cart-item__img">
+              <img src="{{ item.image_src }}" alt="{{ item.image_alt }}">
+            </div>
+            <div class="cart-item__details">
+              <h3 class="cart-item__name">{{ item.name }}</h3>
+              <span class="cart-item__unit-price">{{ item.unit_price }}&nbsp;€ / pc</span>
+            </div>
+            <div class="cart-item__qty-wrap">
+              <div class="cart-item__qty">
+                <button class="cart-item__qty-btn" data-action="minus" type="button"><i class="fa-solid fa-minus"></i></button>
+                <input class="cart-item__qty-input" type="number" value="{{ item.qty }}" min="1" max="{{ item.max_stock }}">
+                <button class="cart-item__qty-btn" data-action="plus" type="button"><i class="fa-solid fa-plus"></i></button>
+              </div>
+              <span class="cart-item__stock-warn" style="display:none;"><i class="fa-solid fa-triangle-exclamation"></i> Only <span class="cart-item__stock-max"></span> in stock</span>
+            </div>
+            <div class="cart-item__end">
+              <span class="cart-item__line-total">{{ item.line_total }}&nbsp;€</span>
+              <button class="cart-item__remove" type="button" aria-label="Remove item"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="cart-coupon" id="cartCouponSection">
+          <div class="cart-coupon__form" id="couponForm">
+            <label class="cart-coupon__label" for="couponInput"><i class="fa-solid fa-tag"></i> Have a coupon code?</label>
+            <div class="cart-coupon__row">
+              <input class="cart-coupon__input" id="couponInput" type="text" placeholder="Enter code" autocomplete="off">
+              <button class="cart-coupon__apply btn btn--primary" id="couponApplyBtn" type="button">Apply</button>
+            </div>
+            <span class="cart-coupon__error" id="couponError" style="display:none;">Invalid coupon code</span>
+          </div>
+          <div class="cart-coupon__applied" id="couponApplied" style="display:none;">
+            <div class="cart-coupon__badge">
+              <i class="fa-solid fa-tag"></i>
+              <span id="couponBadgeCode"></span>
+              <span id="couponBadgeDesc"></span>
+            </div>
+            <button class="cart-coupon__remove" id="couponRemoveBtn" type="button" aria-label="Remove coupon"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <div class="cart-empty" id="cartEmpty" style="display:none;">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <p>Your cart is empty.</p>
+          <a href="{{ data.continue_shopping_url }}" class="btn btn--primary">Continue Shopping</a>
+        </div>
+
+        <div class="cart-section" id="cartCountrySection">
+          <h2 class="cart-section__title">Delivery country</h2>
+          <div class="cart-select-wrap">
+            <select class="cart-select" id="cartCountry">
+              {% for opt in data.country_options %}
+              <option value="{{ opt.value }}"{% if opt.selected %} selected{% endif %}>{{ opt.label }}</option>
+              {% endfor %}
+            </select>
+            <i class="fa-solid fa-chevron-down cart-select__arrow"></i>
+          </div>
+        </div>
+
+        <div class="cart-section" id="cartShippingSection">
+          <h2 class="cart-section__title">Shipping method</h2>
+          <div class="cart-options" id="shippingOptions">
+            {% for opt in data.shipping_options %}
+            <label class="cart-option{% if opt.checked %} cart-option--checked{% endif %}">
+              <input type="radio" name="shipping" value="{{ opt.value }}" data-price="{{ opt.price_num }}"{% if opt.checked %} checked{% endif %}>
+              <span class="cart-option__radio"></span>
+              <i class="fa-solid fa-{{ opt.icon }} cart-option__icon"></i>
+              <span class="cart-option__info">
+                <span class="cart-option__name">{{ opt.name }}</span>
+                <span class="cart-option__desc">{{ opt.desc }}</span>
+              </span>
+              <span class="cart-option__price">{{ opt.price_display }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="cart-section" id="cartPaymentSection">
+          <h2 class="cart-section__title">Payment method</h2>
+          <div class="cart-options" id="paymentOptions">
+            {% for opt in data.payment_options %}
+            <label class="cart-option{% if opt.checked %} cart-option--checked{% endif %}">
+              <input type="radio" name="payment" value="{{ opt.value }}" data-price="{{ opt.price_num }}"{% if opt.checked %} checked{% endif %}>
+              <span class="cart-option__radio"></span>
+              {% if opt.icons %}
+              <span class="cart-option__icon-group">
+                {% for icon in opt.icons %}<i class="fa-brands fa-{{ icon }}"></i>{% endfor %}
+              </span>
+              {% else %}
+              <i class="fa-brands fa-{{ opt.icon }} cart-option__icon"></i>
+              {% endif %}
+              <span class="cart-option__info">
+                <span class="cart-option__name">{{ opt.name }}</span>
+              </span>
+              <span class="cart-option__price">{{ opt.price_display }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <aside class="cart-summary" id="cartSummary">
+        <h2 class="cart-summary__title">Order Summary</h2>
+        <div class="cart-summary__rows">
+          <div class="cart-summary__row">
+            <span>Subtotal (<span id="summaryItemCount">{{ data.summary.item_count }}</span> items)</span>
+            <span id="summarySubtotal">{{ data.summary.subtotal }}&nbsp;€</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--discount" id="summaryDiscountRow" style="display:none;">
+            <span>Discount (<span id="summaryDiscountLabel"></span>)</span>
+            <span id="summaryDiscount"></span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Shipping</span>
+            <span id="summaryShipping">{{ data.summary.shipping }}&nbsp;€</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Payment fee</span>
+            <span id="summaryPayment">{{ data.summary.payment }}</span>
+          </div>
+          <div class="cart-summary__divider"></div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total incl. VAT</span>
+            <span id="summaryTotal">{{ data.summary.total }}&nbsp;€</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--vat">
+            <span>Total excl. VAT</span>
+            <span id="summaryTotalExVat">{{ data.summary.total_ex_vat }}&nbsp;€</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--vat">
+            <span>VAT (20%)</span>
+            <span id="summaryVat">{{ data.summary.vat }}&nbsp;€</span>
+          </div>
+        </div>
+        <button class="cart-summary__checkout btn btn--primary" type="button" id="checkoutBtn">Proceed to Checkout <i class="fa-solid fa-arrow-right"></i></button>
+        <a href="{{ data.continue_shopping_url }}" class="cart-summary__continue"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+      </aside>
+    </div>
+  </div>
+</section>

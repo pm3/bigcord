@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block main %}
+{% with data=page_hero_data %}
+{% include 'components/page_hero.html' %}
+{% endwith %}
+{% with data=tutorials_filter_data %}
+{% include 'components/tutorials_filter.html' %}
+{% endwith %}
+{% with data=tutorials_list_data %}
+{% include 'components/tutorials_list.html' %}
+{% endwith %}
+{% endblock %}

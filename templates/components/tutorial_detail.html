@@ -1,0 +1,19 @@
+{# Expects: data.title, data.labels[] (display names), data.cover_src, data.cover_alt, data.body_html #}
+<article class="tutorial-detail">
+  <div class="container">
+    <header class="tutorial-detail__header">
+      <h1 class="tutorial-detail__title">{{ data.title }}</h1>
+      <div class="tutorial-detail__labels">
+        {% for tag in data.labels %}
+        <span class="label-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </header>
+    <div class="tutorial-detail__cover">
+      <img src="{{ data.cover_src }}" alt="{{ data.cover_alt }}">
+    </div>
+    <div class="tutorial-detail__body">
+      {{ data.body_html | safe }}
+    </div>
+  </div>
+</article>

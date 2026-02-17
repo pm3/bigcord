@@ -1,0 +1,15 @@
+{
+  "section_title": "Categories",
+  "items": [
+    { "url": "product-cord.html", "img": "img/categories/6mm_sewing_cords.webp", "alt": "Cords for sewing", "label": "Cords for sewing" },
+    { "url": "product-cord.html", "img": "img/categories/1_5mm_cord.webp", "alt": "Cords 1.5mm BIG CORD", "label": "Cords 1.5mm BIG CORD" },
+    { "url": "product-cord.html", "img": "img/categories/2mm_cord.webp", "alt": "Cords 2mm BIG CORD", "label": "Cords 2mm BIG CORD" },
+    { "url": "product-cord.html", "img": "img/categories/3mm_braided_cords.webp", "alt": "Cords 3mm BIG CORD", "label": "Cords 3mm BIG CORD" },
+    { "url": "product-cord.html", "img": "img/categories/5mm_braided_cords_threads.webp", "alt": "Cords 5mm – COTTON core", "label": "Cords 5mm – COTTON core" },
+    { "url": "product-cord.html", "img": "img/categories/5mm_braided_cords_PES.webp", "alt": "Cords 5mm – PES core", "label": "Cords 5mm – PES core" },
+    { "url": "product-cord.html", "img": "img/categories/9mm_braided_cords.webp", "alt": "Cords 9mm BIG CORD", "label": "Cords 9mm BIG CORD" },
+    { "url": "product-category.html", "img": "img/categories/6mm_sewing_cords.webp", "alt": "Sewing threads", "label": "Sewing threads" },
+    { "url": "product-category.html", "img": "img/categories/5mm_braided_cords_threads.webp", "alt": "Other components", "label": "Other components" },
+    { "url": "product-category.html", "img": "img/categories/9mm_braided_cords.webp", "alt": "DIY set", "label": "DIY set" }
+  ]
+}

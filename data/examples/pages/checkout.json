@@ -1,0 +1,7 @@
+{
+  "template": "pages/page_checkout.html",
+  "title": "Checkout – BIG CORD",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "checkout_main_data": "_load:data/examples/components/checkout_main.json"
+}

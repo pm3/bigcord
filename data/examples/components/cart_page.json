@@ -1,0 +1,33 @@
+{
+  "title": "Shopping Cart",
+  "items": [
+    { "id": "1", "image_src": "https://placehold.co/80x80/f3e8ff/6c3fa0?text=Lav", "image_alt": "Lavender", "name": "BIG CORD 5mm Cotton – Lavender", "unit_price": "4,50", "unit_price_num": "4.50", "qty": 3, "max_stock": 23, "line_total": "13,50" },
+    { "id": "2", "image_src": "https://placehold.co/80x80/e8f5e9/2e7d32?text=Sage", "image_alt": "Sage", "name": "BIG CORD 5mm Cotton – Sage", "unit_price": "4,50", "unit_price_num": "4.50", "qty": 2, "max_stock": 15, "line_total": "9,00" }
+  ],
+  "country_options": [
+    { "value": "SK", "label": "Slovakia", "selected": true },
+    { "value": "CZ", "label": "Czech Republic", "selected": false },
+    { "value": "DE", "label": "Germany", "selected": false }
+  ],
+  "shipping_options": [
+    { "value": "standard", "name": "Standard Shipping", "desc": "3–5 business days", "price_display": "3,90 €", "price_num": "3.90", "icon": "truck", "checked": true },
+    { "value": "express", "name": "Express Shipping", "desc": "1–2 business days", "price_display": "8,90 €", "price_num": "8.90", "icon": "truck-fast", "checked": false },
+    { "value": "pickup", "name": "Personal Pickup", "desc": "Pezinok, Slovakia", "price_display": "Free", "price_num": "0", "icon": "store", "checked": false }
+  ],
+  "payment_options": [
+    { "value": "card", "name": "Credit / Debit Card", "price_display": "Free", "price_num": "0", "icons": ["cc-visa", "cc-mastercard"], "checked": true },
+    { "value": "stripe", "name": "Stripe", "price_display": "Free", "price_num": "0", "icon": "cc-stripe", "checked": false },
+    { "value": "paypal", "name": "PayPal", "price_display": "+ 2,00 €", "price_num": "2.00", "icon": "cc-paypal", "checked": false }
+  ],
+  "summary": {
+    "item_count": 5,
+    "subtotal": "22,50",
+    "shipping": "3,90",
+    "payment": "0,00",
+    "total": "26,40",
+    "total_ex_vat": "22,00",
+    "vat": "4,40"
+  },
+  "checkout_url": "checkout.html",
+  "continue_shopping_url": "index.html"
+}

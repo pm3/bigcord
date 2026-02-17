@@ -1,0 +1,22 @@
+{
+  "tutorials": [
+    {
+      "url": "tutorial-detail.html",
+      "image_src": "https://placehold.co/600x400/f3e8ff/6c3fa0?text=Macram%C3%A9+Basics",
+      "image_alt": "Macramé Basics",
+      "labels": "macrame beginner",
+      "labels_display": ["Macramé", "Beginner"],
+      "title": "Macramé Basics: Your First Wall Hanging",
+      "excerpt": "Learn the fundamental knots and create a beautiful wall hanging from scratch using BIG CORD 5mm cotton rope."
+    },
+    {
+      "url": "tutorial-detail.html",
+      "image_src": "https://placehold.co/600x400/e8f5e9/2e7d32?text=Plant+Hanger",
+      "image_alt": "Macramé Plant Hanger",
+      "labels": "macrame advanced",
+      "labels_display": ["Macramé", "Advanced"],
+      "title": "Macramé Plant Hanger with Wooden Ring",
+      "excerpt": "Step-by-step guide to creating a stunning plant hanger using spiral knots and gathering knots with our 3mm cord."
+    }
+  ]
+}

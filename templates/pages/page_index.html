@@ -1,0 +1,13 @@
+{# Special page: no fixed components. Receives "components" = [{ component_name, params }, ...]. Main zone iterates and includes each component with its params. #}
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+{% for comp in components %}
+{% set _template = comp.component_name ~ '.html' %}
+{% with data=comp.params %}
+{% include _template %}
+{% endwith %}
+{% endfor %}
+{% endblock %}

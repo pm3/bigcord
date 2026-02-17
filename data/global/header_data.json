@@ -1,0 +1,13 @@
+{
+  "logo_url": "https://www.bigcord.eu/wp-content/uploads/2024/02/cropped-cropped-cropped-Dizajn-bez-nazvu-11.png",
+  "logo_alt": "BIG CORD",
+  "home_url": "index.html",
+  "cart_url": "cart.html",
+  "cart_total": "25,50",
+  "cart_active": false,
+  "nav_links": [
+    { "url": "index.html", "label": "Shop", "active": false },
+    { "url": "tutorials.html", "label": "Tutorials", "active": false },
+    { "url": "cart.html", "label": "Cart", "active": false }
+  ]
+}

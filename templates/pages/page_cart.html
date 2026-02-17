@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block main %}
+{% with data=cart_main_data %}
+{% include 'checkout/cart_main.html' %}
+{% endwith %}
+{% endblock %}

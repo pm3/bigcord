@@ -1,0 +1,9 @@
+{
+  "template": "pages/page_product_category.html",
+  "title": "Cords 5mm BIG CORD – PES core – BIG CORD",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "breadcrumb_data": "_load:data/examples/components/breadcrumb_category.json",
+  "cat_header_data": "_load:data/examples/components/cat_header.json",
+  "product_grid_data": "_load:data/examples/components/product_grid.json"
+}

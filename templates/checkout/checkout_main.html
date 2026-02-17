@@ -1,0 +1,200 @@
+{# Expects: data.title, data.summary_title, data.items[] { image_src, image_alt, name, qty, price }, data.totals { subtotal, shipping_label, shipping, payment_fee_label, payment_fee, total, total_ex_vat, vat }, data.back_to_cart_url, data.country_display #}
+<section class="checkout">
+  <div class="container">
+    <h1 class="checkout__title">{{ data.title }}</h1>
+    <div class="checkout__layout">
+
+      <div class="checkout__summary">
+        <h2 class="checkout__section-title">{{ data.summary_title }}</h2>
+        <div class="checkout__items">
+          {% for item in data['items'] %}
+          <div class="checkout__item">
+            <div class="checkout__item-img">
+              <img src="{{ item.image_src }}" alt="{{ item.image_alt }}">
+            </div>
+            <div class="checkout__item-info">
+              <span class="checkout__item-name">{{ item.name }}</span>
+              <span class="checkout__item-qty">Qty: {{ item.qty }}</span>
+            </div>
+            <span class="checkout__item-price">{{ item.price }}&nbsp;€</span>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="checkout__totals">
+          <div class="checkout__totals-row">
+            <span>Subtotal</span>
+            <span>{{ data.totals.subtotal }}&nbsp;€</span>
+          </div>
+          <div class="checkout__totals-row">
+            <span>{{ data.totals.shipping_label }}</span>
+            <span>{{ data.totals.shipping }}&nbsp;€</span>
+          </div>
+          <div class="checkout__totals-row">
+            <span>{{ data.totals.payment_fee_label }}</span>
+            <span>{{ data.totals.payment_fee }}</span>
+          </div>
+          <div class="checkout__totals-divider"></div>
+          <div class="checkout__totals-row checkout__totals-row--total">
+            <span>Total incl. VAT</span>
+            <span>{{ data.totals.total }}&nbsp;€</span>
+          </div>
+          <div class="checkout__totals-row checkout__totals-row--sub">
+            <span>Total excl. VAT</span>
+            <span>{{ data.totals.total_ex_vat }}&nbsp;€</span>
+          </div>
+          <div class="checkout__totals-row checkout__totals-row--sub">
+            <span>VAT (20%)</span>
+            <span>{{ data.totals.vat }}&nbsp;€</span>
+          </div>
+        </div>
+        <a href="{{ data.back_to_cart_url }}" class="checkout__back-link"><i class="fa-solid fa-arrow-left"></i> Back to cart</a>
+      </div>
+
+      <div class="checkout__form-wrap">
+        <form class="checkout__form" id="checkoutForm" novalidate>
+          <fieldset class="co-fieldset">
+            <legend class="co-fieldset__legend">Contact Information</legend>
+            <div class="co-field">
+              <label class="co-label" for="coEmail">Email <span class="co-req">*</span></label>
+              <input class="co-input" id="coEmail" type="email" placeholder="your@email.com" required>
+            </div>
+            <div class="co-field">
+              <label class="co-label" for="coPhone">Phone <span class="co-req">*</span></label>
+              <input class="co-input" id="coPhone" type="tel" placeholder="+421 9xx xxx xxx" required>
+              <span class="co-hint">Required for delivery courier</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="co-fieldset">
+            <legend class="co-fieldset__legend">Shipping Address</legend>
+            <div class="co-row">
+              <div class="co-field co-field--half">
+                <label class="co-label" for="coFirstName">First name <span class="co-req">*</span></label>
+                <input class="co-input" id="coFirstName" type="text" required>
+              </div>
+              <div class="co-field co-field--half">
+                <label class="co-label" for="coLastName">Last name <span class="co-req">*</span></label>
+                <input class="co-input" id="coLastName" type="text" required>
+              </div>
+            </div>
+            <div class="co-field">
+              <label class="co-label" for="coAddress">Address <span class="co-req">*</span></label>
+              <input class="co-input" id="coAddress" type="text" placeholder="Street and number" required>
+            </div>
+            <div class="co-row">
+              <div class="co-field co-field--third">
+                <label class="co-label" for="coPostal">Postal code <span class="co-req">*</span></label>
+                <input class="co-input" id="coPostal" type="text" required>
+              </div>
+              <div class="co-field co-field--two-thirds">
+                <label class="co-label" for="coCity">City <span class="co-req">*</span></label>
+                <input class="co-input" id="coCity" type="text" required>
+              </div>
+            </div>
+            <div class="co-field">
+              <label class="co-label">Country</label>
+              <div class="co-country-fixed">
+                <i class="fa-solid fa-location-dot"></i> {{ data.country_display }}
+                <a href="{{ data.back_to_cart_url }}" class="co-country-change">Change in cart</a>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="co-fieldset">
+            <legend class="co-fieldset__legend">Billing Address</legend>
+            <label class="co-checkbox-wrap">
+              <input type="checkbox" id="coBillingSame" checked>
+              <span class="co-checkbox"></span>
+              <span class="co-checkbox-label">Use same address for billing</span>
+            </label>
+            <div class="co-billing-fields" id="coBillingFields" style="display:none;">
+              <div class="co-row">
+                <div class="co-field co-field--half">
+                  <label class="co-label" for="coBillFirstName">First name <span class="co-req">*</span></label>
+                  <input class="co-input" id="coBillFirstName" type="text">
+                </div>
+                <div class="co-field co-field--half">
+                  <label class="co-label" for="coBillLastName">Last name <span class="co-req">*</span></label>
+                  <input class="co-input" id="coBillLastName" type="text">
+                </div>
+              </div>
+              <div class="co-field">
+                <label class="co-label" for="coBillAddress">Address <span class="co-req">*</span></label>
+                <input class="co-input" id="coBillAddress" type="text" placeholder="Street and number">
+              </div>
+              <div class="co-row">
+                <div class="co-field co-field--third">
+                  <label class="co-label" for="coBillPostal">Postal code <span class="co-req">*</span></label>
+                  <input class="co-input" id="coBillPostal" type="text">
+                </div>
+                <div class="co-field co-field--two-thirds">
+                  <label class="co-label" for="coBillCity">City <span class="co-req">*</span></label>
+                  <input class="co-input" id="coBillCity" type="text">
+                </div>
+              </div>
+              <div class="co-field">
+                <label class="co-label" for="coBillCountry">Country <span class="co-req">*</span></label>
+                <div class="cart-select-wrap">
+                  <select class="cart-select" id="coBillCountry">
+                    <option value="SK" selected>Slovakia</option>
+                    <option value="CZ">Czech Republic</option>
+                    <option value="DE">Germany</option>
+                    <option value="AT">Austria</option>
+                    <option value="PL">Poland</option>
+                    <option value="HU">Hungary</option>
+                    <option value="EU">Other EU country</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down cart-select__arrow"></i>
+                </div>
+              </div>
+              <div class="co-row">
+                <div class="co-field co-field--half">
+                  <label class="co-label" for="coBillICO">Company registration number</label>
+                  <input class="co-input" id="coBillICO" type="text" placeholder="Optional">
+                </div>
+                <div class="co-field co-field--half">
+                  <label class="co-label" for="coBillVAT">VAT number</label>
+                  <input class="co-input" id="coBillVAT" type="text" placeholder="Optional">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="co-fieldset">
+            <legend class="co-fieldset__legend">Consents</legend>
+            <label class="co-checkbox-wrap">
+              <input type="checkbox" id="coPrivacy" required>
+              <span class="co-checkbox"></span>
+              <span class="co-checkbox-label">I agree with the <a href="#" target="_blank">Privacy Policy</a> and processing of personal data <span class="co-req">*</span></span>
+            </label>
+            <label class="co-checkbox-wrap">
+              <input type="checkbox" id="coTerms" required>
+              <span class="co-checkbox"></span>
+              <span class="co-checkbox-label">I agree with the <a href="#" target="_blank">General Terms and Conditions</a> <span class="co-req">*</span></span>
+            </label>
+            <label class="co-checkbox-wrap">
+              <input type="checkbox" id="coNewsletter">
+              <span class="co-checkbox"></span>
+              <span class="co-checkbox-label">Subscribe to our newsletter for tips and exclusive offers</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="co-fieldset">
+            <label class="co-checkbox-wrap">
+              <input type="checkbox" id="coNoteToggle">
+              <span class="co-checkbox"></span>
+              <span class="co-checkbox-label">Add a note to your order</span>
+            </label>
+            <div class="co-note-field" id="coNoteField" style="display:none;">
+              <textarea class="co-textarea" id="coNote" rows="3" placeholder="Special instructions, delivery preferences…"></textarea>
+            </div>
+          </fieldset>
+
+          <button class="checkout__submit btn btn--primary" type="submit" id="coSubmitBtn">
+            <i class="fa-solid fa-lock"></i> Place Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

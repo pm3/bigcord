@@ -1,0 +1,27 @@
+{# Expects: data.slides[] { title, subtitle, cta_text, cta_url, bg_style } #}
+<section class="banner" aria-label="Promotional banners">
+  <div class="banner__track" id="bannerTrack">
+    {% for slide in data.slides %}
+    <div class="banner__slide{% if loop.first %} active{% endif %}">
+      <div class="banner__placeholder" style="{{ slide.bg_style | default('background: #f3e8ff') }}">
+        <div class="banner__placeholder-content">
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.subtitle }}</p>
+          <a href="{{ slide.cta_url | default('#shop') }}" class="btn btn--primary">{{ slide.cta_text | default('Shop Now') }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="banner__dots" id="bannerDots">
+    {% for slide in data.slides %}
+    <button class="banner__dot{% if loop.first %} active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"></button>
+    {% endfor %}
+  </div>
+  <button class="banner__arrow banner__arrow--prev" id="bannerPrev" aria-label="Previous slide">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="banner__arrow banner__arrow--next" id="bannerNext" aria-label="Next slide">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</section>

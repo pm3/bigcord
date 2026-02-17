@@ -1,0 +1,29 @@
+{
+  "about": {
+    "heading": "About Us",
+    "html": "<strong>VEĽKÁvlna, s.r.o.</strong><br>Company ID: 53 656 491<br>VAT ID: SK2121451585<br><br><a href=\"mailto:bigcord.info@gmail.com\"><i class=\"fa-regular fa-envelope\"></i> bigcord.info@gmail.com</a><br><a href=\"tel:+421908548762\"><i class=\"fa-solid fa-phone\"></i> +421 908 548 762</a><br><a href=\"tel:+421904198676\"><i class=\"fa-solid fa-phone\"></i> +421 904 198 676</a><br><br><i class=\"fa-solid fa-location-dot\"></i> Kataríny Franklovej 5399/1,<br>902 01 Pezinok, Slovakia"
+  },
+  "customer_service": {
+    "heading": "Customer Service",
+    "links": [
+      { "url": "#", "label": "General Terms and Conditions" },
+      { "url": "#", "label": "Shipping" },
+      { "url": "#", "label": "Return Policy" }
+    ],
+    "payment_heading": "Payment Methods",
+    "payment_icons": [
+      { "icon": "cc-visa", "title": "Visa" },
+      { "icon": "cc-mastercard", "title": "Mastercard" },
+      { "icon": "cc-stripe", "title": "Stripe" },
+      { "icon": "cc-paypal", "title": "PayPal" }
+    ]
+  },
+  "follow_us": {
+    "heading": "Follow Us",
+    "links": [
+      { "url": "https://www.facebook.com/bigcord.eu", "icon": "facebook-f", "label": "Facebook" },
+      { "url": "https://www.instagram.com/bigcord.eu/", "icon": "instagram", "label": "Instagram" }
+    ]
+  },
+  "copyright": "© 2026 VEĽKÁvlna, s.r.o. All rights reserved."
+}

@@ -1,0 +1,44 @@
+{# Expects: data.about, data.customer_service, data.follow_us, data.copyright #}
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div class="footer__block">
+        <h4 class="footer__heading">{{ data.about.heading }}</h4>
+        <address class="footer__address">
+          {{ data.about.html | safe }}
+        </address>
+      </div>
+
+      <div class="footer__block">
+        <h4 class="footer__heading">{{ data.customer_service.heading }}</h4>
+        <ul class="footer__links">
+          {% for link in data.customer_service.links %}
+          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+        <h4 class="footer__heading footer__heading--small">{{ data.customer_service.payment_heading }}</h4>
+        <div class="footer__payments">
+          {% for payment in data.customer_service.payment_icons %}
+          <span class="footer__payment-icon" title="{{ payment.title }}"><i class="fa-brands fa-{{ payment.icon }}"></i></span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="footer__block">
+        <h4 class="footer__heading">{{ data.follow_us.heading }}</h4>
+        <div class="footer__social">
+          {% for social in data.follow_us.links %}
+          <a href="{{ social.url }}" target="_blank" rel="noopener" class="footer__social-link" aria-label="{{ social.label }}">
+            <i class="fa-brands fa-{{ social.icon }}"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <p>{{ data.copyright }}</p>
+    </div>
+  </div>
+</footer>

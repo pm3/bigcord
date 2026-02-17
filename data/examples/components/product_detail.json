@@ -1,0 +1,59 @@
+{
+  "title": "BIG CORD 5mm PES – výber farby",
+  "price": "4,50",
+  "price_vat": "3,75",
+  "stock_badge": "In stock",
+  "stock_qty": "23 pcs available",
+  "main_image_src": "img/products/VV-005-100.webp",
+  "main_image_alt": "BIG CORD 5mm PES – výber farby",
+  "description_title": "Description",
+  "description_html": "<p>Premium macramé cord made from 100% recycled cotton with a braided construction. The 5mm thickness is perfect for wall hangings, plant hangers, bags, and home décor.</p><ul><li><strong>Material:</strong> 100% recycled cotton</li><li><strong>Diameter:</strong> 5 mm</li><li><strong>Length per spool:</strong> 100 m</li></ul>",
+  "variant_label": "Dĺžka",
+  "variants": [
+    {
+      "value": "100m",
+      "label": "100 m",
+      "price": "4,50",
+      "stock": "23",
+      "image_src": "img/products/VV-005-100.webp"
+    },
+    {
+      "value": "50m",
+      "label": "50 m",
+      "price": "2,50",
+      "stock": "10"
+    }
+  ],
+  "swatches_data": [
+    {
+      "sku": "VV-005-100",
+      "color": "Snowflower",
+      "tip": "(100) as Snowflower",
+      "image_src": "img/products/VV-005-100.webp",
+      "thumb_src": "img/products/small/VV-005-100.webp",
+      "stock": "10",
+      "color_hex": "#f5f5dc"
+    },
+    {
+      "sku": "VV-005-012",
+      "color": "Mother-in-law's Tongue",
+      "tip": "(012) Mother-in-law's Tongue",
+      "image_src": "img/products/VV-005-012.webp",
+      "thumb_src": "img/products/small/VV-005-012.webp",
+      "stock": "5",
+      "color_hex": "#9acd32"
+    }
+  ],
+  "related_tutorials": [
+    {
+      "url": "tutorial-detail.html",
+      "image_src": "https://placehold.co/300x200/f3e8ff/6c3fa0?text=Macram%C3%A9+Basics",
+      "title": "Macramé Basics: Your First Wall Hanging"
+    },
+    {
+      "url": "tutorial-detail.html",
+      "image_src": "https://placehold.co/300x200/e8f5e9/2e7d32?text=Plant+Hanger",
+      "title": "Macramé Plant Hanger with Wooden Ring"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{# Expects: data.section_title, data.posts[] { bg_style? }, data.cta_url, data.handle #}
+<section class="instagram" id="instagram">
+  <div class="container">
+    <h2 class="section-title"><i class="fa-brands fa-instagram"></i> {{ data.section_title }}</h2>
+    <div class="instagram__grid" id="instagramGrid">
+      {% for post in data.posts %}
+      <div class="instagram__post">
+        <div class="instagram__placeholder" style="background:{{ post.bg_style | default('#f8e1f4') }};"><i class="fa-brands fa-instagram"></i></div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="instagram__cta">
+      <a href="{{ data.cta_url }}" target="_blank" rel="noopener" class="btn btn--instagram">
+        <i class="fa-brands fa-instagram"></i> {{ data.handle }}
+      </a>
+    </div>
+  </div>
+</section>

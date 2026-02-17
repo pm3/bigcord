@@ -1,0 +1,8 @@
+{
+  "template": "pages/page_product_cord.html",
+  "title": "BIG CORD 5mm Cotton – BIG CORD",
+  "header_data": "_load:data/global/header_data.json",
+  "footer_data": "_load:data/global/footer_data.json",
+  "breadcrumb_data": "_load:data/examples/components/breadcrumb.json",
+  "product_detail_data": "_load:data/examples/components/product_detail.json"
+}

@@ -1,0 +1,14 @@
+{# Expects: data.items[] { url, label } — last item is current page (no link) #}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb__list">
+      {% for item in data['items'] %}
+      {% if loop.last %}
+      <li aria-current="page">{{ item.label }}</li>
+      {% else %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+  </div>
+</nav>

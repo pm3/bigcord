@@ -1,0 +1,6 @@
+{
+  "products": [
+    { "sku": "VV-005-100", "url": "product-cord.html", "name": "5mm braided cord (100) as Snowflower", "image_src": "img/products/small/VV-005-100.webp", "price": "4,50" },
+    { "sku": "VV-005-012", "url": "product-cord.html", "name": "5mm braided cord (012) as Mother-in-law's Tongue", "image_src": "img/products/small/VV-005-012.webp", "price": "4,50" }
+  ]
+}

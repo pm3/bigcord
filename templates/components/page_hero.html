@@ -1,0 +1,9 @@
+{# Expects: data.title, data.subtitle? #}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero__title">{{ data.title }}</h1>
+    {% if data.subtitle %}
+    <p class="page-hero__subtitle">{{ data.subtitle }}</p>
+    {% endif %}
+  </div>
+</section>

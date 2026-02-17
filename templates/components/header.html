@@ -1,0 +1,41 @@
+{# Expects: data.logo_url, data.logo_alt, data.nav_links[], data.cart_total, data.active_link? #}
+<header class="header">
+  <div class="header__inner container">
+    <a href="{{ data.home_url | default('index.html') }}" class="header__logo">
+      <img
+        src="{{ data.logo_url }}"
+        alt="{{ data.logo_alt | default('BIG CORD') }}"
+        width="384"
+        height="306"
+      >
+    </a>
+
+    <nav class="header__nav" id="mainNav">
+      <ul class="header__menu">
+        {% for link in data.nav_links %}
+        <li><a href="{{ link.url }}"{% if link.active %} class="is-active"{% endif %}>{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href="{{ data.cart_url | default('cart.html') }}" class="header__cart{% if data.cart_active %} is-active-link{% endif %}" aria-label="Shopping cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="header__cart-total">{{ data.cart_total }}&nbsp;€</span>
+      </a>
+      <button class="header__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__list">
+      {% for link in data.nav_links %}
+      <li><a href="{{ link.url }}"{% if link.active %} class="is-active"{% endif %}>{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</header>

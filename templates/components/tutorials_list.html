@@ -1,0 +1,29 @@
+{# Expects: data.tutorials[] { url, image_src, image_alt, labels[], title, excerpt } #}
+<section class="tutorials-list">
+  <div class="container">
+    {% for t in data.tutorials %}
+    <article class="tutorial-card" data-labels="{{ t.labels | join(' ') }}">
+      <a href="{{ t.url }}" class="tutorial-card__image">
+        <img data-src="{{ t.image_src }}" alt="{{ t.image_alt }}" class="lazy">
+        <noscript><img src="{{ t.image_src }}" alt="{{ t.image_alt }}"></noscript>
+      </a>
+      <div class="tutorial-card__body">
+        <div class="tutorial-card__labels">
+          {% for tag in t.labels_display %}
+          <span class="label-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        <h2 class="tutorial-card__title"><a href="{{ t.url }}">{{ t.title }}</a></h2>
+        <p class="tutorial-card__excerpt">{{ t.excerpt }}</p>
+        <a href="{{ t.url }}" class="tutorial-card__link">Read more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </article>
+    {% endfor %}
+
+    <div class="tutorials-empty" id="tutorialsEmpty" style="display:none;">
+      <i class="fa-regular fa-face-sad-tear"></i>
+      <p>No tutorials found for the selected filter.</p>
+      <button class="btn btn--outline" id="resetFilter">Show all</button>
+    </div>
+  </div>
+</section>

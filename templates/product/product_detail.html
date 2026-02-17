@@ -1,0 +1,92 @@
+{# Expects: data.title, data.price, data.price_vat, data.stock_badge (text), data.stock_qty?, data.main_image_src, data.main_image_alt, data.description_title?, data.description_html #}
+<section class="pd">
+  <div class="container">
+    <div class="pd__layout">
+      <div class="pd__gallery">
+        <div class="pd__image" id="pdMainImage">
+          <img src="{{ data.main_image_src }}" alt="{{ data.main_image_alt }}">
+        </div>
+      </div>
+      <div class="pd__info">
+        <h1 class="pd__title" id="pdTitle">{{ data.title }}</h1>
+
+        {% if data.variants %}
+        <div class="pd__variant">
+          <span class="pd__variant-label">{{ data.variant_label | default('Variant') }}</span>
+          <div class="pd__variant-chips" id="variantChips">
+            {% for v in data.variants %}
+            <button class="pd__chip{% if loop.first %} is-active{% endif %}" type="button"
+              data-value="{{ v.value }}"
+              data-price="{{ v.price | default(data.price) }}"
+              data-stock="{{ v.stock | default('') }}"
+              {% if v.image_src %}data-img="{{ v.image_src }}"{% endif %}>
+              {{ v.label }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="pd__price-block">
+          <span class="pd__price" id="pdPrice">{{ data.price }}&nbsp;€</span>
+          <span class="pd__price-vat" id="pdPriceVat">{{ data.price_vat }}&nbsp;€ excl. VAT</span>
+        </div>
+        <div class="pd__stock" id="pdStock">
+          <span id="pdStockIn" class="pd__stock-badge pd__stock-badge--in"><i class="fa-solid fa-circle-check"></i> In stock</span>
+          <span id="pdStockOut" class="pd__stock-badge pd__stock-badge--out" style="display:none;"><i class="fa-solid fa-circle-xmark"></i> Out of stock</span>
+          <span id="pdStockQty" class="pd__stock-qty">12 pcs available</span>
+        </div>
+        <div class="pd__actions">
+          <div class="pd__qty">
+            <button class="pd__qty-btn" id="qtyMinus" type="button" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+            <input class="pd__qty-input" id="qtyInput" type="number" value="1" min="1" max="99" aria-label="Quantity">
+            <button class="pd__qty-btn" id="qtyPlus" type="button" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="pd__add-btn" id="pdAddBtn" type="button">
+            <span class="btn-text"><i class="fa-solid fa-cart-plus"></i> Add to cart</span>
+            <span class="btn-loader"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {% if data.swatches_data %}
+    <section class="swatches" id="swatchSection" aria-label="Color selection">
+      <div class="swatches__grid" id="swatchGrid">
+        {% for swatch in data.swatches_data %}
+        <div class="swatch" data-index="{{ loop.index0 }}" data-name="{{ data.title }} as {{ swatch.color }}" data-stock="{{ swatch.stock | default('0') }}" data-img="{{ swatch.image_src }}" data-sku="{{ swatch.sku }}">
+          <img src="{{ swatch.thumb_src }}" alt="{{ data.title }} as {{ swatch.color }}" loading="lazy" onerror="this.style.background='#eee';this.style.minHeight='100%';this.onerror=null;">
+          <span class="swatch__tip">{{ swatch.color }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <section class="pd__description">
+      <h2 class="pd__desc-title">{{ data.description_title | default('Description') }}</h2>
+      <div class="pd__desc-body">
+        {{ data.description_html | safe }}
+      </div>
+    </section>
+
+    {% if data.related_tutorials %}
+    <section class="pd__tutorials">
+      <h2 class="pd__desc-title">Related Tutorials</h2>
+      <div class="pd__tutorials-grid">
+        {% for t in data.related_tutorials %}
+        <a href="{{ t.url }}" class="pd__tutorial-card">
+          <div class="pd__tutorial-img">
+            <img src="{{ t.image_src }}" alt="{{ t.title }}">
+          </div>
+          <div class="pd__tutorial-info">
+            <h3>{{ t.title }}</h3>
+            <span class="pd__tutorial-link">Read tutorial <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</section>

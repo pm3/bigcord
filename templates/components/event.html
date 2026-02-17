@@ -1,0 +1,35 @@
+{# Expects: data.section_title, data.name, data.date, data.location_html, data.image_src, data.image_alt, data.countdown_target (ISO datetime), data.cta_url, data.cta_text #}
+<section class="event" id="event">
+  <div class="container">
+    <h2 class="section-title">{{ data.section_title }}</h2>
+    <div class="event__card">
+      <div class="event__image">
+        <img src="{{ data.image_src }}" alt="{{ data.image_alt }}" class="event__image-img">
+      </div>
+      <div class="event__info">
+        <h3 class="event__name">{{ data.name }}</h3>
+        <p class="event__date"><i class="fa-regular fa-calendar"></i> {{ data.date }}</p>
+        <p class="event__location"><i class="fa-solid fa-location-dot"></i> {{ data.location_html | safe }}</p>
+        <div class="event__countdown" id="eventCountdown" data-target="{{ data.countdown_target }}">
+          <div class="countdown__item">
+            <span class="countdown__number" id="countDays">--</span>
+            <span class="countdown__label">days</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__number" id="countHours">--</span>
+            <span class="countdown__label">hours</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__number" id="countMinutes">--</span>
+            <span class="countdown__label">min</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__number" id="countSeconds">--</span>
+            <span class="countdown__label">sec</span>
+          </div>
+        </div>
+        <a href="{{ data.cta_url }}" class="btn btn--outline">{{ data.cta_text }}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+{# Expects: data.labels[] { id, name } — first is usually "all" #}
+<section class="tutorials-filter">
+  <div class="container">
+    <div class="filter-pills" id="filterPills">
+      {% for label in data.labels %}
+      <button class="filter-pill{% if loop.first %} is-active{% endif %}" data-label="{{ label.id }}">{{ label.name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{# Expects: data.section_title?, data.items[] { url, img, alt, label } #}
+<section class="categories" id="shop">
+  <div class="container">
+    {% if data.section_title %}
+    <h2 class="section-title">{{ data.section_title }}</h2>
+    {% endif %}
+    <div class="categories__grid">
+      {% for item in data['items'] %}
+      <a href="{{ item.url }}" class="category-card">
+        <div class="category-card__frame">
+          <img src="{{ item.img }}" alt="{{ item.alt }}" class="category-card__img">
+        </div>
+        <span class="category-card__label">{{ item.label }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
