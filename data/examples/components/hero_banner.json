@@ -1,0 +1,25 @@
+{
+    "slides": [
+      {
+        "title": "Handmade with Love",
+        "subtitle": "Premium macramé cords for your creative projects",
+        "cta_text": "Shop Now",
+        "cta_url": "#shop",
+        "bg_style": "#f3e8ff"
+      },
+      {
+        "title": "New Collection 2026",
+        "subtitle": "Explore our latest colors and sizes",
+        "cta_text": "Discover",
+        "cta_url": "#shop",
+        "bg_style": "#e8f5e9"
+      },
+      {
+        "title": "Free Shipping over 50 €",
+        "subtitle": "On all orders within the EU",
+        "cta_text": "Order Now",
+        "cta_url": "#shop",
+        "bg_style": "#fff3e0"
+      }
+    ]
+  }
